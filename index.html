@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>30 Days to a High-Trust Life | Transform Your Leadership Through Trust</title>
     <meta name="description" content="Join the global TrustFlow movement. A co-authored book and coaching program to build, sustain, and repair trust in leadership and life." />
@@ -11,5 +11,71 @@
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- Persistent booking link (opens LeadConnector booking in a new tab) -->
+    <a
+      href="https://api.leadconnectorhq.com/widget/bookings/jeffrey-morris-personal-calendar-qtvcbubsc"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Book a time with Jeffrey Morris"
+      style="position:fixed;bottom:20px;right:20px;z-index:1000;background:#0066cc;color:#ffffff;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600;box-shadow:0 8px 20px rgba(0,0,0,0.12);"
+      >Book a time</a
+    >
+
+    <!-- Persistent FAQs link (navigates to internal FAQs page) -->
+    <a
+      href="/faqs.html"
+      aria-label="Read Frequently Asked Questions"
+      style="position:fixed;bottom:68px;right:20px;z-index:1000;background:#0a7f5a;color:#ffffff;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600;box-shadow:0 8px 20px rgba(0,0,0,0.12);"
+      >FAQs</a
+    >
+
+    <!-- Runtime overrides: ensure CTA and FAQs nav behave as desired without modifying the compiled bundle -->
+    <script>
+      (function () {
+        const BOOKING_URL = 'https://api.leadconnectorhq.com/widget/bookings/jeffrey-morris-personal-calendar-qtvcbubsc';
+        const CANONICAL_FAQS = '/faqs.html';
+
+        // Intercept clicks early (capture phase) so SPA handlers don't take over first
+        document.addEventListener(
+          'click',
+          function (e) {
+            try {
+              const target = e.target && (e.target.closest ? e.target.closest('a,button,[role="button"]') : null);
+              if (!target) return;
+
+              const text = (target.textContent || '').trim().toLowerCase();
+
+              // 1) Route any "Book a 15-minute Chat" button to LeadConnector in a new tab
+              const isBook15MinChat =
+                text.includes('book a 15-minute chat') ||
+                (text.includes('book a 15') && text.includes('chat'));
+              const isBookCallSponsoring =
+                (text.includes('book a call') && text.includes('jeff') && text.includes('morris')) ||
+                text.includes('sponsoring author');
+              if (isBook15MinChat || isBookCallSponsoring) {
+                e.preventDefault();
+                window.open(BOOKING_URL, '_blank', 'noopener');
+                return;
+              }
+
+              // 2) Normalize any FAQs link that points to "/faqs" (no slash or SPA) to our static page
+              if (target.tagName === 'A') {
+                const href = target.getAttribute('href') || '';
+                // Match exact '/faqs' or current-origin absolute '/faqs'
+                if (href === '/faqs' || href === window.location.origin + '/faqs') {
+                  e.preventDefault();
+                  window.location.assign(CANONICAL_FAQS);
+                  return;
+                }
+              }
+            } catch (err) {
+              // Fail quietly to avoid impacting the app
+            }
+          },
+          true
+        );
+      })();
+    </script>
   </body>
 </html>
