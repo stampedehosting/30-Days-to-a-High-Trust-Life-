@@ -34,7 +34,32 @@
     <script>
       (function () {
         const BOOKING_URL = 'https://api.leadconnectorhq.com/widget/bookings/jeffrey-morris-personal-calendar-qtvcbubsc';
-        const CANONICAL_FAQS = '/faqs.html';
+  const CANONICAL_FAQS = '/faqs.html';
+  const CANONICAL_SUBMISSION = '/page-submission/';
+
+        function normalizeHref(href) {
+          if (!href) return href;
+          try {
+            const u = new URL(href, window.location.origin);
+            if (u.origin !== window.location.origin) return href; // leave external links alone
+            if (u.pathname === '/faqs') u.pathname = CANONICAL_FAQS;
+            if (u.pathname === '/page-submission') u.pathname = CANONICAL_SUBMISSION;
+            return u.pathname + u.search + u.hash;
+          } catch {
+            return href;
+          }
+        }
+
+        function rewriteInternalLinks(root = document) {
+          const anchors = root.querySelectorAll('a[href]');
+          anchors.forEach(a => {
+            const oldHref = a.getAttribute('href');
+            const newHref = normalizeHref(oldHref);
+            if (newHref && newHref !== oldHref) {
+              a.setAttribute('href', newHref);
+            }
+          });
+        }
 
         // Intercept clicks early (capture phase) so SPA handlers don't take over first
         document.addEventListener(
@@ -62,10 +87,26 @@
               // 2) Normalize any FAQs link that points to "/faqs" (no slash or SPA) to our static page
               if (target.tagName === 'A') {
                 const href = target.getAttribute('href') || '';
-                // Match exact '/faqs' or current-origin absolute '/faqs'
-                if (href === '/faqs' || href === window.location.origin + '/faqs') {
+                const abs = window.location.origin + href;
+                const textTarget = (target.textContent || '').toLowerCase();
+
+                // FAQs canonicalization
+                if (href === '/faqs' || abs === window.location.origin + '/faqs') {
                   e.preventDefault();
                   window.location.assign(CANONICAL_FAQS);
+                  return;
+                }
+
+                // Page Submission: force full page load to static page for both /page-submission and /page-submission/
+                const isSubmissionHref =
+                  href === '/page-submission' ||
+                  href === '/page-submission/' ||
+                  abs === window.location.origin + '/page-submission' ||
+                  abs === window.location.origin + '/page-submission/';
+                const isSubmissionText = textTarget.includes('page submission');
+                if (isSubmissionHref || isSubmissionText) {
+                  e.preventDefault();
+                  window.location.assign(CANONICAL_SUBMISSION);
                   return;
                 }
               }
@@ -75,6 +116,32 @@
           },
           true
         );
+
+        // Initial rewrite on load
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', () => rewriteInternalLinks());
+        } else {
+          rewriteInternalLinks();
+        }
+
+        // Observe DOM changes (SPA route changes, menu open, etc.) and rewrite links
+        const mo = new MutationObserver(mutations => {
+          for (const m of mutations) {
+            if (m.type === 'childList') {
+              m.addedNodes.forEach(node => {
+                if (node.nodeType === 1) rewriteInternalLinks(node);
+              });
+            } else if (m.type === 'attributes' && m.target && m.attributeName === 'href') {
+              if (m.target.tagName === 'A') rewriteInternalLinks(m.target);
+            }
+          }
+        });
+        mo.observe(document.documentElement, { childList: true, subtree: true, attributes: true, attributeFilter: ['href'] });
+
+        // If someone lands on the SPA route directly, steer to the canonical static page
+        if (window.location.pathname === '/page-submission') {
+          window.location.replace(CANONICAL_SUBMISSION);
+        }
       })();
     </script>
   </body>
