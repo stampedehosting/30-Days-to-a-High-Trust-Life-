@@ -12,27 +12,15 @@
   <body>
     <div id="root"></div>
 
-    <!-- Persistent booking link (opens LeadConnector booking in a new tab) -->
-    <a
-      href="https://api.leadconnectorhq.com/widget/bookings/jeffrey-morris-personal-calendar-qtvcbubsc"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Book a time with Jeffrey Morris"
-      style="position:fixed;bottom:20px;right:20px;z-index:1000;background:#0066cc;color:#ffffff;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600;box-shadow:0 8px 20px rgba(0,0,0,0.12);"
-      >Book a time</a
-    >
+    <!-- Static "Book a time" button removed as per user request to move the button. The button is now expected to be part of the SPA content. -->
 
-    <!-- Persistent FAQs link (navigates to internal FAQs page) -->
-    <a
-      href="/faqs.html"
-      aria-label="Read Frequently Asked Questions"
-      style="position:fixed;bottom:68px;right:20px;z-index:1000;background:#0a7f5a;color:#ffffff;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600;box-shadow:0 8px 20px rgba(0,0,0,0.12);"
-      >FAQs</a
-    >
+    <!-- Static "FAQs" button removed as per user request to move the button. The button is now expected to be part of the SPA content. -->
 
     <!-- Runtime overrides: ensure CTA and FAQs nav behave as desired without modifying the compiled bundle -->
     <script>
       (function () {
+        const BOOKING_URL_ROBERT = 'https://api.leadconnectorhq.com/widget/bookings/robert-jones-personal-calendar'; // PLACEHOLDER: Please replace this with Robert\'s actual calendar link.
+        const BOOKING_URL_JEFF = 'https://api.leadconnectorhq.com/widget/bookings/jeffrey-morris-personal-calendar-qtvcbubsc';
         const BOOKING_URL = 'https://api.leadconnectorhq.com/widget/bookings/jeffrey-morris-personal-calendar-qtvcbubsc';
   const CANONICAL_FAQS = '/faqs.html';
   const CANONICAL_SUBMISSION = '/page-submission/';
@@ -78,9 +66,18 @@
               const isBookCallSponsoring =
                 (text.includes('book a call') && text.includes('jeff') && text.includes('morris')) ||
                 text.includes('sponsoring author');
-              if (isBook15MinChat || isBookCallSponsoring) {
+              const isBookCallJeff = text.includes('book call with jeff');
+              const isBookCallRobert = text.includes('book call with robert');
+
+              if (isBook15MinChat || isBookCallSponsoring || isBookCallJeff) {
                 e.preventDefault();
-                window.open(BOOKING_URL, '_blank', 'noopener');
+                window.open(BOOKING_URL_JEFF, '_blank', 'noopener');
+                return;
+              }
+
+              if (isBookCallRobert) {
+                e.preventDefault();
+                window.open(BOOKING_URL_ROBERT, '_blank', 'noopener');
                 return;
               }
 
