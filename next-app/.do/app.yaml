@@ -1,0 +1,29 @@
+name: trustflow-app
+region: nyc
+
+services:
+  - name: web
+    github:
+      repo: stampedehosting/30-Days-to-a-High-Trust-Life-
+      branch: main
+      deploy_on_push: true
+    
+    source_dir: /next-app
+    
+    build_command: npm run build
+    run_command: npm start
+    
+    environment_slug: node-js
+    
+    envs:
+      - key: NODE_ENV
+        value: production
+        scope: RUN_AND_BUILD_TIME
+    
+    http_port: 3000
+    
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    
+    routes:
+      - path: /
