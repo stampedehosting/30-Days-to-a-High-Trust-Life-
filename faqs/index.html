@@ -34,27 +34,53 @@
         const e = React.createElement;
         function FAQs(){
           return e(React.Fragment, null,
-            e('h1', null, 'FAQs – Revisions to Website Copy:'),
+            e('h1', null, 'FAQs – Website Copy:'),
             e('p', { className: 'muted' }, 'Answers to common questions for contributors.'),
 
+            // Getting Started
+            e('h2', null, 'Getting Started'),
+            e('h3', null, 'Q: How much time will this take?'),
+            e('p', null, 'A: 60 minutes with Jeff, plus ~30 minutes to complete the one‑page template. Our team polishes the final draft.'),
+            e('h3', null, 'Q: Do I need to take an assessment?'),
+            e('p', null, 'A: Yes—your Trust Factor (via DreamSmart partner DNA Behavior) is included.'),
+            e('h3', null, 'Q. Who Can Contribute to this book?'),
+            e('p', null, 'We\'re looking for 28 innovative leaders including founders, executives, team leaders, investors, advisors, board members, veterans, educators, community innovators, connectors, creators, change agents, and purpose-driven professionals. Both experienced authors and first-time contributors are welcome.'),
+
+            // Content & Editing
             e('h2', null, 'Content & Editing'),
-            e('p', null,
-              e('strong', null, 'Question: Will my content be edited?'), e('br'),
-              'Yes, your content will be edited. ',
-              e('b', null, 'DO NOT USE AI'),
-              ' to edit your submission. We use humans to edit our writer\'s content, to ensure clarity, coherence, and brand consistency across all contributions. Our professional editorial team will polish your content while maintaining your authentic voice. Final approval is always yours before publication.'
-            ),
+            e('h3', null, 'Q: Will my content be edited?'),
+            e('p', null, 'A: Yes, your content will be edited. DO NOT USE AI to edit your submission. We use humans to edit our writers' content, to ensure clarity, coherence, and brand consistency across all contributions. Our professional editorial team will polish your content while maintaining your authentic voice. Final approval is always yours before publication.'),
+            e('h3', null, 'Q: Is my contribution promotional?'),
+            e('p', null, 'A: It's reflective, practical, and story‑driven—not a sales pitch. We'll include one short bio line and a link.'),
+            e('h3', null, 'Q. Is AI-submitted content allowed?'),
+            e('p', null, 'The author must create all author submissions to the AOC book series as "original works". Use of AI-created passages does not meet originality standards required by either the Library of Congress or the original works standard set forth by the Art of Connection book series creator, Robert W. Jones. This standard preserves the integrity of the publication and meets our Agreement with the Library of Congress, which explicitly states that they cannot certify our books as original art if AI is included. Beyond the use of AI for Ideation and Research for yourself, AI-generated content is prohibited in AOC books as acceptable material for publication, as explained above. Art of Connection publications use an "AI-sniffer" tool and a live Editor to help maintain the "original works" requirement.'),
 
+            // Investment & Value
+            e('h2', null, 'Investment & Value'),
+            e('h3', null, 'Q: Can I get an invoice for my business?'),
+            e('p', null, 'A: Absolutely. We'll provide a receipt and W‑9 upon request.'),
+            e('h3', null, 'Q. What\'s included in the $799 investment?'),
+            e('p', null, 'A. Your investment includes: 60-minute Trust Factor coaching session ($1,250 value), TrustFlow assessment tools ($200 value), professional page design and editing ($500 value), contributor spotlight in launch promotions ($250 value), Library of Congress Certificate (priceless), unique dynamic QR code ($250 annual value), and more—over $2,750 total value.'),
+            e('h3', null, 'Q. Are there any additional costs?'),
+            e('p', null, 'The $799 contributor fee includes everything needed for your participation. Optional upgrades are available such as enhanced editing ($200), editorial advisement ($100), or professional photo optimization ($40), but these are completely optional.'),
+
+            // Timeline & Process
+            e('h2', null, 'Timeline & Process'),
+            e('h3', null, 'Q: What's the publication timeline?'),
+            e('p', null, 'A: Drafts within 2–3 weeks of your session. The print and launch dates will be communicated to all contributors.'),
+            e('h3', null, 'Q. How does the submission process work?'),
+            e('p', null, 'After securing your spot: 1) Complete your Trust Factor session with Jeff Morris, 2) Receive your assessment results, 3) Submit your content and professional photos, 4) Our team reviews and formats your contribution, 5) You approve the final version, 6) Your pages are included in the published book.'),
+            e('h3', null, 'Q. When will I see my finished pages?'),
+            e('p', null, 'You\'ll receive a preview of your formatted pages for approval before final publication. This typically happens 1-2 weeks after you submit your content, allowing time for professional design and editing.'),
+
+            // Benefits & Outcomes
             e('h2', null, 'Benefits & Outcomes'),
-            e('p', null,
-              e('strong', null, 'What credibility will I gain?'), e('br'),
-              "You'll become a published author in a professionally produced book series, receive Library of Congress registration, gain 2x International Best Selling Author status, and be associated with respected leaders in the trust and leadership space. This provides significant credibility for speaking, consulting, generative search attribution, and business development."
-            ),
-
-            e('h2', null, 'How will this help my business?'),
-            e('p', null,
-              "Published authorship opens doors for speaking opportunities, media interviews, client credibility, and thought leadership positioning. You'll also gain access to our contributor network for potential partnerships and collaborations with other members."
-            )
+            e('h3', null, 'Q. What credibility will I gain?'),
+            e('p', null, 'You\'ll become a published author in a professionally produced book series, receive Library of Congress registration, gain 2x International Best Selling Author status, and be associated with respected leaders in the trust and leadership space. This provides significant credibility for speaking, consulting, generative search attribution, and business development.'),
+            e('h3', null, 'Q. How will this help my business?'),
+            e('p', null, 'Published authorship opens doors to speaking opportunities, media interviews, client credibility, and thought-leadership positioning. You\'ll also gain access to our contributor network for potential partnerships and collaborations with other members.'),
+            e('h3', null, 'Q. Will I own the rights to my contribution?'),
+            e('p', null, 'You retain ownership of your original content while granting us publication rights for the book series. You\'re free to use your contribution in your own marketing materials, with proper attribution to the book series.')
           );
         }
 
