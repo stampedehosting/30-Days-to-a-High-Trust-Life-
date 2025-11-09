@@ -1,0 +1,10 @@
+/* [project]/next-app/src/app/globals.css [app-client] (css) */
+* {
+  box-sizing: border-box;
+}
+
+#__next-build-watcher, nextjs-portal {
+  display: none !important;
+}
+
+/*# sourceMappingURL=next-app_src_app_globals_bf0f16ec.css.map*/

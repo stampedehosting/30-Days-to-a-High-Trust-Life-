@@ -1,0 +1,34 @@
+BACKUP INFORMATION
+==================
+Created: 2025-11-08 23:28:25
+Hostname: MacBookPro.lan
+User: j-nmb
+Project: 30 Days to High Trust Life
+Purpose: Pre-optimization backup (mobile iframe & image optimization)
+
+BACKUP CONTENTS
+===============
+Assets Directory: 30 files (12M)
+Next.js Assets: 43 files (18M)
+CSS Files: 32 files
+JavaScript Files: 1 files
+
+DIRECTORIES BACKED UP
+=====================
+- /Users/j-nmb/current_projects/backup/30-Days-to-a-High-Trust-Life-/assets
+- /Users/j-nmb/current_projects/backup/30-Days-to-a-High-Trust-Life-/next-app/public/assets
+- All CSS files
+- All JavaScript bundles
+
+RESTORE INSTRUCTIONS
+====================
+To restore this backup, run:
+  ./rollback.sh 20251108_232824
+
+Or manually:
+  rsync -av "/Users/j-nmb/current_projects/backup/30-Days-to-a-High-Trust-Life-/backups/backup_20251108_232824/" "/Users/j-nmb/current_projects/backup/30-Days-to-a-High-Trust-Life-/"
+
+VERIFICATION
+============
+Backup integrity can be verified with:
+  ./verify-backup.sh 20251108_232824

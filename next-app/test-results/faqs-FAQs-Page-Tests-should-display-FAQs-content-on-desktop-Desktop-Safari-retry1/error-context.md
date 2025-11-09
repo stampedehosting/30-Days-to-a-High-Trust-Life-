@@ -1,0 +1,41 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e4]:
+      - heading "Your Questions Answered" [level=1] [ref=e5]
+      - paragraph [ref=e6]: Get clear answers about the contribution process, timeline, investment, and benefits. If you don't find what you're looking for, we're here to help.
+      - button "📞 Book a Call" [ref=e8] [cursor=pointer]
+    - generic [ref=e10]:
+      - generic [ref=e11]:
+        - heading "Frequently Asked Questions" [level=2] [ref=e12]
+        - paragraph [ref=e13]: Click on any section below to explore detailed answers to common questions
+      - generic [ref=e15] [cursor=pointer]:
+        - generic [ref=e16]: ▶
+        - generic [ref=e17]: Getting Started
+        - generic [ref=e18]: ▼
+      - generic [ref=e20] [cursor=pointer]:
+        - generic [ref=e21]: ✎
+        - generic [ref=e22]: Content & Editing
+        - generic [ref=e23]: ▼
+      - generic [ref=e25] [cursor=pointer]:
+        - generic [ref=e26]: $
+        - generic [ref=e27]: Investment & Value
+        - generic [ref=e28]: ▼
+      - generic [ref=e30] [cursor=pointer]:
+        - generic [ref=e31]: ⊙
+        - generic [ref=e32]: Timeline & Process
+        - generic [ref=e33]: ▼
+      - generic [ref=e35] [cursor=pointer]:
+        - generic [ref=e36]: ★
+        - generic [ref=e37]: Benefits & Outcomes
+        - generic [ref=e38]: ▼
+      - generic [ref=e39]:
+        - heading "Still Have Questions?" [level=3] [ref=e40]
+        - paragraph [ref=e41]: Our team is here to support you throughout your contributor journey
+        - button "🗓️ Schedule a Call" [ref=e43] [cursor=pointer]
+      - link "← Back to Home" [ref=e45]:
+        - /url: /
+  - alert [ref=e46]
+```

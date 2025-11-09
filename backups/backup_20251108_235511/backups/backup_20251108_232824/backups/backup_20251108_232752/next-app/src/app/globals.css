@@ -1,0 +1,12 @@
+/* Minimal reset to avoid conflicts with legacy CSS */
+* {
+  box-sizing: border-box;
+}
+
+/* Let the legacy CSS handle all styling */
+
+/* Hide Next.js development indicator */
+#__next-build-watcher,
+nextjs-portal {
+  display: none !important;
+}
