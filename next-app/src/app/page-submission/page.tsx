@@ -36,7 +36,7 @@ export default function PageSubmissionPage() {
       step: "Step 3", 
       week: "Week 2",
       title: "Submit Your Content",
-      description: "Provide your trust quote, contemplation, reflection question, and professional bio using our guided templates.",
+      description: "Provide your trust quote, contemplation, Reflective Question, and professional bio using our guided templates.",
       icon: "✎"
     },
     {
@@ -73,7 +73,7 @@ export default function PageSubmissionPage() {
       items: [
         { name: "Trust Quote", description: "1-2 sentences capturing your core trust philosophy" },
         { name: "Contemplation", description: "200-300 words expanding on your quote" },
-        { name: "Reflection Question", description: "Thought-provoking question for readers" },
+        { name: "Reflective Question", description: "Thought-provoking question for readers" },
         { name: "Professional Bio", description: "75-100 words highlighting your expertise" },
         { name: "Contact Information", description: "Website, LinkedIn, and preferred contact method" }
       ]
